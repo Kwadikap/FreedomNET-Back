@@ -21,10 +21,6 @@ router.post('/register', async (req, res) => {
         //SAVE USER AND RESPOND
         const user = await newUser.save();
         res.status(200).json(user);
-        res.setHeader('Access-Control-Allow-Origin', 'https://main--freedomnet-social.netlify.app/');
-        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-        res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-        res.setHeader('Access-Control-Allow-Credentials', true);
 
     } catch (err) {
         res.status(500).json(err);
@@ -42,10 +38,6 @@ router.post('/login', async (req, res) => {
         !validPassword && res.status(400).json('incorrect password');
 
         res.status(200).json(user);
-        res.setHeader('Access-Control-Allow-Origin', 'https://main--freedomnet-social.netlify.app/');
-        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-        res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-        res.setHeader('Access-Control-Allow-Credentials', true);
 
     } catch (err) {
         res.status(500).json(err);
