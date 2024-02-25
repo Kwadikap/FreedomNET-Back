@@ -13,11 +13,13 @@ const multer = require('multer');
 const path = require('path');
 const cors = require('cors');
 
+
 // app.use(cors({
 //     origin: 'https://main--freedomnet-social.netlify.app/',
 //     credentials: true,
 //     optionSuccessStatus: 200,
 // }));
+
 
 
 dotenv.config();
