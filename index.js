@@ -13,11 +13,13 @@ const multer = require('multer');
 const path = require('path');
 const cors = require('cors');
 
-app.use(cors({
-    origin: 'https://main--freedomnet-social.netlify.app/',
-    credentials: true,
-    optionSuccessStatus: 200,
-}));
+
+// app.use(cors({
+//     origin: 'https://main--freedomnet-social.netlify.app/',
+//     credentials: true,
+//     optionSuccessStatus: 200,
+// }));
+
 
 
 dotenv.config();
@@ -52,6 +54,13 @@ app.post('/api/upload', upload.single('file'), (req, res) => {
 })
 
 
+app.use(function (req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', 'https://main--freedomnet-social.netlify.app/');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    next();
+});
 
 app.use('/api/users', userRoute);
 app.use('/api/auth', authRoute);
