@@ -13,15 +13,16 @@ const multer = require('multer');
 const path = require('path');
 const cors = require('cors');
 
-// app.use(cors({
-//     origin: '/localhost:3000/',
-//     credentials: true,
-// }));
+app.use(cors({
+    origin: 'https://643ffda81b996f352c844118--freedomnet-social.netlify.app/',
+    credentials: true,
+    optionSuccessStatus: 200,
+}));
 
 
-dotenv.config(); 
+dotenv.config();
 
-mongoose.connect(process.env.MONGODB_URL, {useNewUrlParser: true}, () => {
+mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true }, () => {
     console.log('Connected to database ✅')
 });
 
@@ -33,15 +34,15 @@ app.use(helmet());
 app.use(morgan('common'));
 
 const storage = multer.diskStorage({
-    destination:(req,file,cb) => {
+    destination: (req, file, cb) => {
         cb(null, 'public/images')
     },
-    filename: (req,file,cb) => {
+    filename: (req, file, cb) => {
         cb(null, req.body.name)
     }
 })
 
-const upload = multer({storage});
+const upload = multer({ storage });
 app.post('/api/upload', upload.single('file'), (req, res) => {
     try {
         return res.status(200).json('File uploaded successfully.');
