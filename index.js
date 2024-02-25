@@ -15,7 +15,7 @@ const cors = require('cors');
 
 
 app.use(cors({
-    origin: 'https://main--freedomnet-social.netlify.app/',
+    origin: '*',
     credentials: true,
     optionSuccessStatus: 200,
 }));
